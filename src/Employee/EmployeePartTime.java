@@ -7,13 +7,17 @@ public class EmployeePartTime extends Employee implements Serializable {
     private final long salaryBonus = 500000;
     private long actualSalary;
 
-    public EmployeePartTime(String id, String name, int age, String email, String numberPhone, long salary, String status) {
-        super(id, name, age, email, numberPhone, salary, status);
-    }
-
-    public EmployeePartTime(long actualSalary) {
+    public EmployeePartTime(String id, String name, String gender, int age, String email, String numberPhone, long salary, String status, String typeEmployee, long actualSalary) {
+        super(id, name, gender, age, email, numberPhone, salary, status);
+        this.typeEmployee = typeEmployee;
         this.actualSalary = actualSalary;
     }
+
+    public EmployeePartTime(String typeEmployee, long actualSalary) {
+        this.typeEmployee = typeEmployee;
+        this.actualSalary = actualSalary;
+    }
+
 
     public EmployeePartTime() {
         super();

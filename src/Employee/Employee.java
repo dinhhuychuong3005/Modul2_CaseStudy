@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Employee implements Serializable {
     private String id;
+    private String gender;
     private String name;
     private int age;
     private String email;
@@ -11,9 +12,9 @@ public class Employee implements Serializable {
     private long salary;
     private String status;
 
-
-    public Employee(String id, String name, int age, String email, String numberPhone, long salary, String status) {
+    public Employee(String id, String name, String gender, int age, String email, String numberPhone, long salary, String status) {
         this.id = id;
+        this.gender = gender;
         this.name = name;
         this.age = age;
         this.email = email;
@@ -22,6 +23,13 @@ public class Employee implements Serializable {
         this.status = status;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Employee() {
 
@@ -92,6 +100,7 @@ public class Employee implements Serializable {
         return "Employee: " +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", gender=" + gender + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", numberPhone='" + numberPhone + '\'' +

@@ -1,8 +1,10 @@
 package Employee;
 
+import Filecsv.EmployeeFile;
 import Manage.Manage;
 import Validate.Validate;
 
+import java.io.IOException;
 import java.util.*;
 
 public class ManageEmployee {
@@ -11,6 +13,11 @@ public class ManageEmployee {
     InOutEmployee inOutEmployee = new InOutEmployee();
 
     public ManageEmployee() {
+        try {
+            this.list = EmployeeFile.readFromFile("Employee.csv");
+        } catch (IOException e) {
+            this.list = new ArrayList<>();
+        }
     }
 
     public ManageEmployee(List<Employee> list) {
@@ -38,6 +45,11 @@ public class ManageEmployee {
         Employee employee = inOutEmployee.inputPartTime();
         employee.setId(id);
         list.add(employee);
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -53,6 +65,11 @@ public class ManageEmployee {
         Employee employee = inOutEmployee.inputFullTime();
         employee.setId(id);
         list.add(employee);
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void display(List<Employee> employee) {
@@ -103,6 +120,11 @@ public class ManageEmployee {
             employee.setId(id);
             list.set(checkById(id), employee);
         }
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void editStatus() {
@@ -120,6 +142,11 @@ public class ManageEmployee {
             employee.setStatus("Đã nghỉ");
             list.set(checkById(id), employee);
         }
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -132,10 +159,15 @@ public class ManageEmployee {
             list.remove(checkById(id));
             System.out.println("Danh sách nhân viên sau khi xóa:");
             display(list);
+            try {
+                EmployeeFile.writeToFile("Employee.csv",list);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void changeStatus() {
+    public void deleteByStatus() {
         boolean check = false;
         int index = 0;
         for (int i = 0; i < list.size(); i++) {
@@ -148,6 +180,11 @@ public class ManageEmployee {
             list.remove(index);
             System.out.println("Dánh sách nhân viên sau khi xóa các nhân viên đã nghỉ là:");
             display(list);
+            try {
+                EmployeeFile.writeToFile("Employee.csv",list);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Không có nhân viên nào nghỉ làm");
         }
@@ -164,6 +201,11 @@ public class ManageEmployee {
                     return n;
             }
         });
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sortBySalary() {
@@ -173,6 +215,11 @@ public class ManageEmployee {
                 return (int) (o1.getSalary() - o2.getSalary());
             }
         });
+        try {
+            EmployeeFile.writeToFile("Employee.csv",list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void searchByName() {

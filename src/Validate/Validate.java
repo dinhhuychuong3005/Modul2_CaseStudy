@@ -8,7 +8,6 @@ public class Validate {
     public final static String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     public static final String NAME_REGEX = "^[\\p{L} .'-]+$";
     public static final String PHONE_REGEX = "^[0][0-9]{9}$";
-    public static final String SALARY_REGEX = "^[0-9]{6,7,8}$";
 
 
     public static boolean valid(String str,String regex){

@@ -19,6 +19,26 @@ public class InOutEmployee {
             }
         } while ((!Validate.valid(name, Validate.NAME_REGEX)) || name == null);
         employeeFullTime.setName(name);
+        System.out.println("Nhập vào giới tính nhân viên:");
+        System.out.println("1.Male + \t + 2.Female");
+        String gender = null;
+        int line = scanner.nextInt();
+        while (true){
+            switch (line){
+                case 1:
+                    gender = "Male";
+                    break;
+                case 2:
+                    gender = "Female";
+                    break;
+                default:
+                    System.out.println("Mời nhập lại");
+                    break;
+            }
+            break;
+        }
+        scanner.nextLine();
+        employeeFullTime.setGender(gender);
         System.out.println("Nhập vào tuổi của nhân viên:");
         System.out.println("Nhân viên không vượt quá 50 tuổi");
         int age;
@@ -76,6 +96,26 @@ public class InOutEmployee {
             }
         } while ((!Validate.valid(name, Validate.NAME_REGEX)) || name == null);
         employeePartTime.setName(name);
+        System.out.println("Nhập vào giới tính nhân viên:");
+        System.out.println("1.Male + \t + 2.Female");
+        String gender = null;
+        int line = scanner.nextInt();
+        while (true){
+            switch (line){
+                case 1:
+                    gender = "Male";
+                    break;
+                case 2:
+                    gender = "Female";
+                    break;
+                default:
+                    System.out.println("Mời nhập lại");
+                    break;
+            }
+            break;
+        }
+        scanner.nextLine();
+        employeePartTime.setGender(gender);
         System.out.println("Nhập vào tuổi của nhân viên:");
         System.out.println("Nhân viên không vượt quá 50 tuổi");
         int age;

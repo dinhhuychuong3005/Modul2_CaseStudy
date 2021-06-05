@@ -3,17 +3,21 @@ package Employee;
 import java.io.Serializable;
 
 public class EmployeeFullTime extends Employee implements Serializable {
-    private String typeEmployee = "FullTime";
+    private  String typeEmployee = "FullTime";
     private final long salaryBonus = 1000000;
     private long actualSalary;
 
-    public EmployeeFullTime(String id, String name, int age, String email, String numberPhone, long salary, String status) {
-        super(id, name, age, email, numberPhone, salary, status);
-    }
-
-    public EmployeeFullTime(long actualSalary) {
+    public EmployeeFullTime(String id, String name, String gender, int age, String email, String numberPhone, long salary, String status, String typeEmployee, long actualSalary) {
+        super(id, name, gender, age, email, numberPhone, salary, status);
+        this.typeEmployee = typeEmployee;
         this.actualSalary = actualSalary;
     }
+
+    public EmployeeFullTime(String typeEmployee, long actualSalary) {
+        this.typeEmployee = typeEmployee;
+        this.actualSalary = actualSalary;
+    }
+
 
     public EmployeeFullTime() {
         super();
