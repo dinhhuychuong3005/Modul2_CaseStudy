@@ -1,6 +1,8 @@
 package Employee;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
     private String id;
     private String name;
     private int age;
@@ -9,8 +11,6 @@ public class Employee {
     private long salary;
     private String status;
 
-    public Employee() {
-    }
 
     public Employee(String id, String name, int age, String email, String numberPhone, long salary, String status) {
         this.id = id;
@@ -20,6 +20,11 @@ public class Employee {
         this.numberPhone = numberPhone;
         this.salary = salary;
         this.status = status;
+    }
+
+
+    public Employee() {
+
     }
 
     public String getId() {
@@ -78,9 +83,13 @@ public class Employee {
         this.status = status;
     }
 
+    public void input() {
+
+    }
+
     @Override
     public String toString() {
-        return  "Employee: " +
+        return "Employee: " +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
@@ -89,4 +98,5 @@ public class Employee {
                 ", basic salary=" + salary +
                 ", status='" + status + '\'';
     }
+
 }

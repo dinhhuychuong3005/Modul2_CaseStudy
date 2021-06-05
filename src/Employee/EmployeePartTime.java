@@ -2,20 +2,20 @@ package Employee;
 
 import java.io.Serializable;
 
-public class EmployeeFullTime extends Employee implements Serializable {
-    private String typeEmployee = "FullTime";
-    private final long salaryBonus = 1000000;
+public class EmployeePartTime extends Employee implements Serializable {
+    private String typeEmployee = "Part time";
+    private final long salaryBonus = 500000;
     private long actualSalary;
 
-    public EmployeeFullTime(String id, String name, int age, String email, String numberPhone, long salary, String status) {
+    public EmployeePartTime(String id, String name, int age, String email, String numberPhone, long salary, String status) {
         super(id, name, age, email, numberPhone, salary, status);
     }
 
-    public EmployeeFullTime(long actualSalary) {
+    public EmployeePartTime(long actualSalary) {
         this.actualSalary = actualSalary;
     }
 
-    public EmployeeFullTime() {
+    public EmployeePartTime() {
         super();
 
     }
@@ -35,8 +35,7 @@ public class EmployeeFullTime extends Employee implements Serializable {
         return this.actualSalary;
     }
 
-
-    public String toString1() {
+    public String toString2() {
         return super.toString() +
                 ", typeEmployee='" + typeEmployee + '\'' +
                 ", salaryBonus=" + salaryBonus +
