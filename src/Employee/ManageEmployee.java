@@ -76,24 +76,26 @@ public class ManageEmployee {
         inOutEmployee.outPut(employee);
     }
 
-    public void printListFullTime() {
-        System.out.println("Danh sách các nhân viên làm full time là:");
+    public List<EmployeeFullTime> printListFullTime() {
+        List<EmployeeFullTime> list1 = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof EmployeeFullTime) {
-                EmployeeFullTime employeePartTime = (EmployeeFullTime) list.get(i);
-                System.out.println(employeePartTime.toString1());
+                EmployeeFullTime employeeFullTime = (EmployeeFullTime) list.get(i);
+                list1.add(employeeFullTime);
             }
         }
+        return list1;
     }
 
-    public void printListPartTime() {
-        System.out.println("Danh sách các nhân viên làm part time là:");
+    public List<EmployeePartTime> printListPartTime() {
+        List<EmployeePartTime> list2 = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof EmployeePartTime) {
                 EmployeePartTime employeePartTime = (EmployeePartTime) list.get(i);
-                System.out.println(employeePartTime.toString2());
+                list2.add(employeePartTime);
             }
         }
+        return list2;
     }
 
 
@@ -115,10 +117,12 @@ public class ManageEmployee {
             Employee employee = inOutEmployee.inputFullTime();
             employee.setId(id);
             list.set(checkById(id), employee);
+            System.out.println("Done!");
         } else {
             Employee employee = inOutEmployee.inputPartTime();
             employee.setId(id);
             list.set(checkById(id), employee);
+            System.out.println("Done!");
         }
         try {
             EmployeeFile.writeToFile("Employee.csv",list);
@@ -132,20 +136,9 @@ public class ManageEmployee {
         String id = scanner.nextLine();
         if (checkById(id) == -1) {
             System.out.println("Không tồn tại mã nhân viên này");
-        } else if (checkById(id) != -1 && list.get(checkById(id)) instanceof EmployeeFullTime) {
-            Employee employee = inOutEmployee.inputFullTime();
-            employee.setId(id);
-            list.set(checkById(id), employee);
         } else {
-            Employee employee = inOutEmployee.inputPartTime();
-            employee.setId(id);
-            employee.setStatus("Đã nghỉ");
-            list.set(checkById(id), employee);
-        }
-        try {
-            EmployeeFile.writeToFile("Employee.csv",list);
-        } catch (IOException e) {
-            e.printStackTrace();
+            list.get(checkById(id)).setStatus("Đã nghỉ");
+            System.out.println("Đã sửa xong");
         }
     }
 

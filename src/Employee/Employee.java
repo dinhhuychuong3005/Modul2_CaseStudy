@@ -100,6 +100,7 @@ public abstract class Employee implements Serializable {
                 ", gender=" + gender + " | " +
                 ", age=" + age + " | " +
                 ", email='" + email + " | " +
-                ", numberPhone='" + numberPhone + " | ";
+                ", numberPhone='" + numberPhone + " | " +
+                ", Status= " + status;
     }
 }

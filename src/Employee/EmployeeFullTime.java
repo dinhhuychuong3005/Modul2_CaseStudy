@@ -57,11 +57,11 @@ public class EmployeeFullTime extends Employee implements Serializable {
 
     public String toString1() {
         return super.toString() +
-                ", typeEmployee='" + typeEmployee + " | "  +
-                "salary"  + salary;
+                ", typeEmployee='" + typeEmployee + " | " ;
     }
     public String toString3() {
-        return super.toString() +
+        return "Employee: " + " | " + ", Id="  + getId() + " | " +
+                ", name=" + getName() + " | " +
                 ", typeEmployee='" + typeEmployee + " | "  +
                 "actualSalary"  + calculateSalary();
     }

@@ -10,9 +10,7 @@ import java.util.Scanner;
 
 public class test {
     public static void main(String[] args) {
-        InOutEmployee inOutEmployee = new InOutEmployee();
         ManageEmployee manageEmployee = new ManageEmployee();
-        EmployeeFile employeeFile = new EmployeeFile();
         Scanner s = new Scanner(System.in);
 
         while (true) {
@@ -29,62 +27,88 @@ public class test {
             System.out.println("9.Tìm kiếm nhân viên theo tên");
             System.out.println("10.Tính lương theo mã nhân viên");
             System.out.println("0.Exit");
+            boolean isMenu = true;
             int choice = s.nextInt();
             s.nextLine();
             switch (choice) {
                 case 1: {
-                    while (true) {
+
+                    while (isMenu){
                         System.out.println("1.Hiển thị tất cả nhân viên");
                         System.out.println("2.Hiển thị nhân viên fulltime");
                         System.out.println("3.Hiển thị tất cả parttime");
+                        System.out.println("0.Quay lại menu chính");
                         int line = s.nextInt();
-                        s.nextLine();
+
                         switch (line) {
                             case 1: {
                                 manageEmployee.display(manageEmployee.getList());
                                 break;
                             }
                             case 2: {
-                                manageEmployee.printListFullTime();
+                                System.out.println("Danh sách nhân viên full time");
+                                List<EmployeeFullTime> employeeFullTimes = manageEmployee.printListFullTime();
+                                if (employeeFullTimes != null) {
+                                    for (EmployeeFullTime e : manageEmployee.printListFullTime()) {
+                                        System.out.println(e.toString1());
+                                    }
+                                } else {
+                                    System.out.println("Không có nhân viên full time");
+                                }
                                 break;
                             }
                             case 3: {
-                                manageEmployee.printListPartTime();
+                                System.out.println("Danh sách nhân viên part time");
+                                List<EmployeePartTime> employeePartTime = manageEmployee.printListPartTime();
+                                if (employeePartTime != null) {
+                                    for (EmployeePartTime e : manageEmployee.printListPartTime()) {
+                                        System.out.println(e.toString2());
+                                    }
+                                } else {
+                                    System.out.println("Không có nhân viên part time");
+                                }
                                 break;
                             }
+                            case 0:
+                                isMenu = false;
+                                break;
                             default:
                                 System.out.println("Mời nhập lại");
                                 break;
                         }
-                        break;
-                    }
+                    } break;
                 }
-                s.nextLine();
                 case 2: {
-
-                    while (true) {
+                    while (isMenu){
                         System.out.println("1.Thêm nhân viên fulltime");
                         System.out.println("2.Thêm nhân viên parttime");
+                        System.out.println("0.Quay lại menu chính");
                         int a = s.nextInt();
                         s.nextLine();
                         switch (a) {
                             case 1: {
                                 manageEmployee.addEmployFullTime();
+                                System.out.println("Dánh sách nhân viên sau khi thêm");
                                 manageEmployee.display(manageEmployee.getList());
                                 break;
                             }
                             case 2: {
                                 manageEmployee.addEmployPartTime();
+                                System.out.println("Dánh sách nhân viên sau khi thêm");
                                 manageEmployee.display(manageEmployee.getList());
+                                break;
+                            }
+                            case 0: {
+                                isMenu = false;
                                 break;
                             }
                             default:
                                 System.out.println("Mời nhập lại");
                                 break;
                         }
-                        break;
-                    }
+                    } break;
                 }
+
                 case 3: {
                     manageEmployee.editStatus();
                     break;
@@ -102,6 +126,12 @@ public class test {
                 case 7:
                     System.out.println("Danh sách nhân viên sau khi sắp xếp là:");
                     manageEmployee.sortByNameByAge();
+                    manageEmployee.display(manageEmployee.getList());
+                    try {
+                        EmployeeFile.writeToFile("Employee.csv",manageEmployee.getList());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 8: {
                     System.out.println("Nhập vào mã nhân viên cần tìm");
@@ -162,9 +192,7 @@ public class test {
                     System.out.println("Mời nhập lại");
                     break;
             }
-            break;
         }
-
     }
 }
 

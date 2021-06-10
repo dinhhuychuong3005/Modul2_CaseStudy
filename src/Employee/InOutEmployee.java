@@ -68,16 +68,6 @@ public class InOutEmployee {
             }
         } while (!Validate.valid(numberPhone, Validate.PHONE_REGEX));
         employeeFullTime.setNumberPhone(numberPhone);
-        System.out.println("Nhập vào tiền lương cơ bản của nhân viên");
-        Long basicSalary;
-        do {
-            basicSalary = scanner.nextLong();
-            if (basicSalary <= 0 || basicSalary >= 50000000) {
-                System.out.println("Mời nhập lại");
-            }
-        } while (basicSalary <= 0 || basicSalary >= 50000000);
-        employeeFullTime.setSalary(basicSalary);
-        scanner.nextLine();
         String status = "Đang làm";
 
         employeeFullTime.setStatus(status);

@@ -52,7 +52,8 @@ public class EmployeePartTime extends Employee implements Serializable {
                 ", typeEmployee='" + typeEmployee + " | " ;
     }
     public String toString4() {
-        return super.toString() +
+        return "Employee: " + " | " + ", Id="  + getId() + " | " +
+                ", name=" + getName() + " | " +
                 ", typeEmployee='" + typeEmployee + " | "  +
                 "actualSalary"  + calculateSalary();
     }

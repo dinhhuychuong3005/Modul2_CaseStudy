@@ -1,19 +1,21 @@
 package Product;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String maSp;
     private String name;
-    private String quantity;
+    private int quantity;
     private double price;
     private String nsx;
     private String hsd;
     private String brand;
-    private String soNgayConLai;
+    private long soNgayConLai;
 
     public Product() {
     }
 
-    public Product(String maSp, String name, String quantity, double price, String nsx, String hsd, String brand, String soNgayConLai) {
+    public Product(String maSp, String name, int quantity, double price, String nsx, String hsd, String brand, long soNgayConLai) {
         this.maSp = maSp;
         this.name = name;
         this.quantity = quantity;
@@ -40,11 +42,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -80,11 +82,11 @@ public class Product {
         this.brand = brand;
     }
 
-    public String getSoNgayConLai() {
+    public long getSoNgayConLai() {
         return soNgayConLai;
     }
 
-    public void setSoNgayConLai(String soNgayConLai) {
+    public void setSoNgayConLai(long soNgayConLai) {
         this.soNgayConLai = soNgayConLai;
     }
 
