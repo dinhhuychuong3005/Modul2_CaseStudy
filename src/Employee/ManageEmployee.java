@@ -208,20 +208,6 @@ public class ManageEmployee {
         }
     }
 
-    public void sortBySalary() {
-        Collections.sort(list, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                return (int) (o1.getSalary() - o2.getSalary());
-            }
-        });
-        try {
-            EmployeeFile.writeToFile("Employee.csv",list);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void searchByName() {
         List<Employee> employees = new ArrayList<>();
         System.out.println("Nhập vào tên nhân viên cần tìm");
@@ -240,27 +226,8 @@ public class ManageEmployee {
             display(employees);
         }
     }
+    public void calculateSalary(){
 
-    public void searchBySalary() {
-        List<Employee> employees = new ArrayList<>();
-        boolean check = false;
-        System.out.println("Nhập vào mức lương cơ bản cần tìm");
-        System.out.println("Khoảng từ bao nhiêu?");
-        Long minSalary = scanner.nextLong();
-        scanner.nextLine();
-        System.out.println("Đến bao nhiêu?");
-        Long maxSalary = scanner.nextLong();
-        scanner.nextLine();
-        for (int i = 0; i < list.size(); i++) {
-            if (minSalary <= list.get(i).getSalary() && list.get(i).getSalary() <= maxSalary) {
-                check = true;
-            }
-        }
-        if (check == false) {
-            System.out.println("Không có dữ liệu bạn cần tìm");
-        } else {
-            System.out.println("Thông tin nhân viên cần tìm là:");
-            display(employees);
-        }
     }
+
 }

@@ -9,7 +9,6 @@ public class Validate {
     public static final String NAME_REGEX = "^[\\p{L} .'-]+$";
     public static final String PHONE_REGEX = "^[0][0-9]{9}$";
 
-
     public static boolean valid(String str,String regex){
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);

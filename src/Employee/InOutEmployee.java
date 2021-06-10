@@ -97,7 +97,7 @@ public class InOutEmployee {
         } while ((!Validate.valid(name, Validate.NAME_REGEX)) || name == null);
         employeePartTime.setName(name);
         System.out.println("Nhập vào giới tính nhân viên:");
-        System.out.println("1.Male + \t + 2.Female");
+        System.out.println("1.Male  \t  2.Female");
         String gender = null;
         int line = scanner.nextInt();
         while (true){
@@ -146,18 +146,7 @@ public class InOutEmployee {
             }
         } while (!Validate.valid(numberPhone, Validate.PHONE_REGEX));
         employeePartTime.setNumberPhone(numberPhone);
-        System.out.println("Nhập vào tiền lương cơ bản của nhân viên");
-        Long basicSalary;
-        do {
-            basicSalary = scanner.nextLong();
-            if (basicSalary <= 0 || basicSalary >= 50000000) {
-                System.out.println("Mời nhập lại");
-            }
-        } while (basicSalary <= 0 || basicSalary >= 50000000);
-        employeePartTime.setSalary(basicSalary);
-        scanner.nextLine();
         String status = "Đang làm";
-
         employeePartTime.setStatus(status);
         return employeePartTime;
     }

@@ -2,7 +2,7 @@ package Employee;
 
 import java.io.Serializable;
 
-public class Employee implements Serializable {
+public abstract class Employee implements Serializable {
     private String id;
     private String gender;
     private String name;
@@ -90,22 +90,16 @@ public class Employee implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public void input() {
-
-    }
+    public abstract long calculateSalary();
 
     @Override
     public String toString() {
-        return "Employee: " +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", gender=" + gender + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", numberPhone='" + numberPhone + '\'' +
-                ", basic salary=" + salary +
-                ", status='" + status + '\'';
+        return "Employee: | " +
+                "id='" + id + " | " +
+                ", name='" + name + " | " +
+                ", gender=" + gender + " | " +
+                ", age=" + age + " | " +
+                ", email='" + email + " | " +
+                ", numberPhone='" + numberPhone + " | ";
     }
-
 }

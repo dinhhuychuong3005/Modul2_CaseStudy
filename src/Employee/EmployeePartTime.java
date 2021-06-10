@@ -6,6 +6,7 @@ public class EmployeePartTime extends Employee implements Serializable {
     private String typeEmployee = "Part time";
     private final long salaryBonus = 500000;
     private long actualSalary;
+    private long hour;
 
     public EmployeePartTime(String id, String name, String gender, int age, String email, String numberPhone, long salary, String status, String typeEmployee, long actualSalary) {
         super(id, name, gender, age, email, numberPhone, salary, status);
@@ -18,6 +19,13 @@ public class EmployeePartTime extends Employee implements Serializable {
         this.actualSalary = actualSalary;
     }
 
+    public long getHour() {
+        return hour;
+    }
+
+    public void setHour(long hour) {
+        this.hour = hour;
+    }
 
     public EmployeePartTime() {
         super();
@@ -33,16 +41,20 @@ public class EmployeePartTime extends Employee implements Serializable {
         this.actualSalary = actualSalary;
     }
 
-
-    public long calculateSalary(){
-        this.actualSalary = super.getSalary() + salaryBonus;
+    @Override
+    public long calculateSalary() {
+        this.actualSalary =  salaryBonus + (30 * hour );
         return this.actualSalary;
     }
 
     public String toString2() {
         return super.toString() +
-                ", typeEmployee='" + typeEmployee + '\'' +
-                ", salaryBonus=" + salaryBonus +
-                ", actualSalary=" + calculateSalary() ;
+                ", typeEmployee='" + typeEmployee + " | " ;
     }
+    public String toString4() {
+        return super.toString() +
+                ", typeEmployee='" + typeEmployee + " | "  +
+                "actualSalary"  + calculateSalary();
+    }
+
 }

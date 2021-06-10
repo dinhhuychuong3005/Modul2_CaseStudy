@@ -3,9 +3,11 @@ package Employee;
 import java.io.Serializable;
 
 public class EmployeeFullTime extends Employee implements Serializable {
-    private  String typeEmployee = "FullTime";
+    private String typeEmployee = "FullTime";
     private final long salaryBonus = 1000000;
+    private final long salary = 7000000;
     private long actualSalary;
+    private long hour;
 
     public EmployeeFullTime(String id, String name, String gender, int age, String email, String numberPhone, long salary, String status, String typeEmployee, long actualSalary) {
         super(id, name, gender, age, email, numberPhone, salary, status);
@@ -24,6 +26,18 @@ public class EmployeeFullTime extends Employee implements Serializable {
 
     }
 
+    public long getHour() {
+        return hour;
+    }
+
+    public void setHour(long hour) {
+        this.hour = hour;
+    }
+
+    @Override
+    public long getSalary() {
+        return salary;
+    }
 
     public long getActualSalary() {
         return actualSalary;
@@ -33,17 +47,22 @@ public class EmployeeFullTime extends Employee implements Serializable {
         this.actualSalary = actualSalary;
     }
 
+    @Override
+    public long calculateSalary() {
+        this.actualSalary = salary + salaryBonus + ((hour * 30) * 1000);
 
-    public long calculateSalary(){
-        this.actualSalary = super.getSalary() + salaryBonus;
         return this.actualSalary;
     }
 
 
     public String toString1() {
         return super.toString() +
-                ", typeEmployee='" + typeEmployee + '\'' +
-                ", salaryBonus=" + salaryBonus +
-                ", actualSalary=" + calculateSalary() ;
+                ", typeEmployee='" + typeEmployee + " | "  +
+                "salary"  + salary;
+    }
+    public String toString3() {
+        return super.toString() +
+                ", typeEmployee='" + typeEmployee + " | "  +
+                "actualSalary"  + calculateSalary();
     }
 }
