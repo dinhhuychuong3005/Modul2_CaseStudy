@@ -1,8 +1,8 @@
 package Filecsv;
 
-import Employee.Employee;
-import Employee.EmployeeFullTime;
-import Employee.EmployeePartTime;
+import model.employee.Employee;
+import model.employee.EmployeeFullTime;
+import model.employee.EmployeePartTime;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package Filecsv;
 
-import Employee.Employee;
-import Product.Product;
+import model.product.Product;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class ProductFile {
         String str = "maSp,name,số lượng,price,nsx,hsd,brand,số ngày còn lại\n";
         for (Product e : list) {
             str += e.getMaSp() + "," + e.getName() + "," + e.getQuantity() + "," + e.getPrice() + "," +
-                    e.getNsx() + "," + e.getHsd() + "," + e.getBrand() + "," + e.getSoNgayConLai();
+                    e.getNsx() + "," + e.getHsd() + "," + e.getBrand() + "," + e.getSoNgayConLai()+"\n";
         }
         bf.write(str);
         bf.close();
