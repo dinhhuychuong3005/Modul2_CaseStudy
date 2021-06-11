@@ -74,15 +74,25 @@ public class ManageProduct {
         if (searchID(id) == -1) {
             System.out.println("Mã sản phẩm không tồn tại");
         } else {
-            productList.remove(searchID(id));
-            System.out.println("done!");
-            System.out.println("Danh sách sản phẩm trong kho sau khi xóa là:");
-            InOutPutProduct.outPut(productList);
-            try {
-                ProductFile.writeToFile("Product.csv", productList);
-            } catch (IOException e) {
-                e.printStackTrace();
+            System.out.println("Bạn có chắc muốn xóa không?");
+            System.out.println("1.Có \t 2.Không");
+            int op = scanner.nextInt();
+            if (op == 1){
+                productList.remove(searchID(id));
+                System.out.println("done!");
+                System.out.println("Danh sách sản phẩm trong kho sau khi xóa là:");
+                InOutPutProduct.outPut(productList);
+                try {
+                    ProductFile.writeToFile("Product.csv", productList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else if (op == 2){
+                System.out.println("Danh sách sản phẩm vẫn giữ nguyên");
+            }else {
+                System.out.println();
             }
+
         }
     }
 
@@ -115,7 +125,21 @@ public class ManageProduct {
         }
         return productList1;
     }
-
+public Product searchById(String id){
+    int index=-1;
+    for (int i = 0; i < productList.size(); i++) {
+        if(productList.get(i).getMaSp().equals(id)) {
+            index=i;
+        }
+    }
+    if(index==-1) {
+        System.out.println("Mã sản phẩm không tồn tại");
+        return null;
+    } else {
+//            System.out.println("Client is found successfully!");
+        return productList.get(index);
+    }
+}
     public void searchByBrand() {
         boolean isMenu = true;
         while (isMenu) {

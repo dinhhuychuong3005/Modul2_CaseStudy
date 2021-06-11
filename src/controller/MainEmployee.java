@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class test {
+public class MainEmployee {
     public static void main(String[] args) {
         ManageEmployee manageEmployee = new ManageEmployee();
         Scanner s = new Scanner(System.in);
