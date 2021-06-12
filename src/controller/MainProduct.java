@@ -161,13 +161,19 @@ public class MainProduct {
                 case 8: {
                     System.out.println("Nhập vào mã hàng hóa cần xem");
                     String id = scanner.nextLine();
-                    if (manageProduct.searchID(id) == -1) {
+                    int a = manageProduct.searchID(id);
+                    if (a == -1) {
                         System.out.println("Mã sản phẩm không tồn tại");
                     } else {
                         System.out.println("Tình trạng sản phẩm cần kiểm tra là");
-                        System.out.println(manageProduct.getProductList().get(manageProduct.searchID(id)).toStringAll());
-                        if (manageProduct.getProductList().get(manageProduct.searchID(id)).getSoNgayConLai() <= 0) {
-                            System.out.println("Sản phẩm đã hết hạn");
+                        System.out.println(manageProduct.getProductList().get(a).toStringAll());
+                        if (manageProduct.getProductList().get(a).getQuantity() <= 0){
+                            System.out.println("Sản phẩm đã hết hàng");
+                        }else {
+                            System.out.println("Sản phẩm vẫn còn hàng. Số lượng: " + manageProduct.getProductList().get(a).getQuantity());
+                        }
+                        if (manageProduct.getProductList().get(a).getSoNgayConLai() <= 0 ) {
+                            System.out.println("Sản phẩm đã hết hạn sử dụng");
                         } else if ((manageProduct.getProductList().get(manageProduct.searchID(id)).getSoNgayConLai()) > 0 && (manageProduct.getProductList().get(manageProduct.searchID(id)).getSoNgayConLai() <= 7)) {
                             System.out.println("Sản phẩm sắp hết hạn");
                         } else {
@@ -179,6 +185,7 @@ public class MainProduct {
                 case 9: {
                    List<Product> list = manageProduct.checkStatus();
                    InOutPutProduct.outPutProduct(manageProduct.getProductList());
+                    manageProduct.checkQuantity();
                     if (list.size() == 0) {
                         System.out.println("Không có sản phẩm nào hết hạn");
                     } else {

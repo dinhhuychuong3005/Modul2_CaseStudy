@@ -1,4 +1,5 @@
 package service;
+
 import Filecsv.ProductFile;
 import model.product.InOutPutProduct;
 import model.product.Product;
@@ -9,7 +10,8 @@ import java.util.*;
 public class ManageProduct {
     Scanner scanner = new Scanner(System.in);
     private List<Product> productList = new ArrayList<>();
-ProductFile productFile = new ProductFile();
+    ProductFile productFile = new ProductFile();
+
     public ManageProduct() {
         try {
             this.productList = productFile.readFromFile("Product.csv");
@@ -78,7 +80,7 @@ ProductFile productFile = new ProductFile();
             System.out.println("1.Có \t 2.Không");
             int op = scanner.nextInt();
             scanner.nextLine();
-            if (op == 1){
+            if (op == 1) {
                 productList.remove(searchID(id));
                 System.out.println("done!");
                 System.out.println("Danh sách sản phẩm trong kho sau khi xóa là:");
@@ -88,9 +90,9 @@ ProductFile productFile = new ProductFile();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else if (op == 2){
+            } else if (op == 2) {
                 System.out.println("Danh sách sản phẩm vẫn giữ nguyên");
-            }else {
+            } else {
                 System.out.println();
             }
 
@@ -126,21 +128,23 @@ ProductFile productFile = new ProductFile();
         }
         return productList1;
     }
-public Product searchById(String id){
-    int index=-1;
-    for (int i = 0; i < productList.size(); i++) {
-        if(productList.get(i).getMaSp().equals(id)) {
-            index=i;
+
+    public Product searchById(String id) {
+        int index = -1;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getMaSp().equals(id)) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            System.out.println("Mã sản phẩm không tồn tại");
+            return null;
+        } else {
+//            System.out.println("Client is found successfully!");
+            return productList.get(index);
         }
     }
-    if(index==-1) {
-        System.out.println("Mã sản phẩm không tồn tại");
-        return null;
-    } else {
-//            System.out.println("Client is found successfully!");
-        return productList.get(index);
-    }
-}
+
     public void searchByBrand() {
         boolean isMenu = true;
         while (isMenu) {
@@ -182,7 +186,8 @@ public Product searchById(String id){
             }
         }
     }
-    public List<Product> searchByPrice(){
+
+    public List<Product> searchByPrice() {
         List<Product> list = new ArrayList<>();
         System.out.println("Nhập vào khoảng giá cần tìm");
         System.out.println("Khoảng từ:");
@@ -191,13 +196,14 @@ public Product searchById(String id){
         Double max = scanner.nextDouble();
         scanner.nextLine();
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getPrice() >= min && productList.get(i).getPrice() <= max){
+            if (productList.get(i).getPrice() >= min && productList.get(i).getPrice() <= max) {
                 list.add(productList.get(i));
             }
         }
         return list;
     }
-    public List<Product> checkStatus(){
+
+    public List<Product> checkStatus() {
         List<Product> list = new ArrayList<>();
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getSoNgayConLai() <= 0) {
@@ -206,17 +212,34 @@ public Product searchById(String id){
         }
         return list;
     }
-public void sortPrice(){
-    Collections.sort(productList, new Comparator<Product>() {
-        @Override
-        public int compare(Product o1, Product o2) {
-            int i = (int) (o1.getPrice() - o2.getPrice());
-            if (i == 0){
-                return o1.getName().compareTo(o2.getName());
+
+    public void sortPrice() {
+        Collections.sort(productList, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                int i = (int) (o1.getPrice() - o2.getPrice());
+                if (i == 0) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+                return i;
             }
-            return i;
+        });
+    }
+    public void checkQuantity(){
+        List<Product> products = new ArrayList<>();
+        boolean check = false;
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getQuantity() <= 0){
+                check = true;
+                products.add(productList.get(i));
+            }
         }
-    });
-}
+        if (check == true){
+            System.out.println("Các sản phẩm hết hàng là: ");
+            InOutPutProduct.outPut(products);
+        }else {
+            System.out.println("Không có sản phẩm nào hết hàng");
+        }
+    }
 }
 
