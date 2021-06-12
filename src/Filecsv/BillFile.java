@@ -15,7 +15,7 @@ public class BillFile {
     public static void writeToFile(String path, List<Bill> list) throws IOException {
         FileWriter fw = new FileWriter(path);
         BufferedWriter bf = new BufferedWriter(fw);
-        String str = "MãHóaĐơn,Tenkhachhang,số điện thoại,tênsp,số lượng,tổng tiền\n";
+        String str = "MãHóaĐơn,Tenkhachhang,sốđiệnthoại,tênsp,sốlượng,tổngtiền\n";
         for (Bill e : list) {
             str += e.getId() + "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + "," + e.getProduct().getMaSp() +
                     "," + e.getProduct().getName() + "," + e.getQuantity() + "," + e.getTotal() + "\n";
