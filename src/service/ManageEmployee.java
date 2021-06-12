@@ -223,8 +223,9 @@ public class ManageEmployee {
     public void searchByName() {
         List<Employee> employees = new ArrayList<>();
         System.out.println("Nhập vào tên nhân viên cần tìm");
-        boolean check = false;
         String name = scanner.nextLine();
+        boolean check = false;
+
         for (int i = 0; i < list.size(); i++) {
             if (name.equals(list.get(i).getName())) {
                 employees.add(list.get(i));

@@ -1,4 +1,4 @@
 ID,Name,Gender,Age,Email,NumberPhone,basicSalary,Status,typeEmployee,actualSalary
-EMP001,chiên,Male,23,chien.le@gmail.com,0329955679,7000000,Đang làm,FullTime,8330000
-EMP002,phong,Female,22,phong.chu@gmail.com,0978651905,7000000,Đang làm,FullTime,9020000
-EMP201,tuyên,Female,28,tuyen.nguyen@gmail.com,0373764376,0,Đang làm,PartTime,500000
+EMP001,chiên,Male,23,chien.le@gmail.com,0329955679,7000000,Đang làm,FullTime,8000000
+EMP002,chương,Male,27,chuong.dinh@gmail.com,0395725513,7000000,Đang làm,FullTime,8600000
+EMP004,phong,Male,22,phong.chu@gmail.com,0978651905,0,Đang làm,PartTime,500000

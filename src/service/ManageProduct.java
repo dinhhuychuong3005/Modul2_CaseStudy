@@ -77,6 +77,7 @@ public class ManageProduct {
             System.out.println("Bạn có chắc muốn xóa không?");
             System.out.println("1.Có \t 2.Không");
             int op = scanner.nextInt();
+            scanner.nextLine();
             if (op == 1){
                 productList.remove(searchID(id));
                 System.out.println("done!");
@@ -192,6 +193,15 @@ public Product searchById(String id){
         scanner.nextLine();
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getPrice() >= min && productList.get(i).getPrice() <= max){
+                list.add(productList.get(i));
+            }
+        }
+        return list;
+    }
+    public List<Product> checkStatus(){
+        List<Product> list = new ArrayList<>();
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getSoNgayConLai() <= 0) {
                 list.add(productList.get(i));
             }
         }

@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainProduct {
-    public static void main(String[] args) {
-        boolean isMenu = true;
+    public static void mainProduct() {
+        boolean check = true;
         Scanner scanner = new Scanner(System.in);
         ManageProduct manageProduct = new ManageProduct();
-        while (true) {
+        while (check) {
             System.out.println("------ QUẢN LÝ KHO HÀNG ------");
             System.out.println("Mời bạn nhập lựa chọn theo số mục lục từ 0-8");
             System.out.println("1. Xem danh sách hàng hóa trong kho.");
@@ -30,6 +30,7 @@ public class MainProduct {
             System.out.println("9. Xem tình trạng tất cả hàng hóa trong kho.");
             System.out.println("10. Sắp xếp hàng hóa theo giá và tên.");
             System.out.println("0. Thoát.");
+            boolean isMenu = true;
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -175,14 +176,8 @@ public class MainProduct {
                     break;
                 }
                 case 9: {
-                    InOutPutProduct.outPutProduct(manageProduct.getProductList());
-                    List<Product> list = new ArrayList<>();
-                    for (int i = 0; i < manageProduct.getProductList().size(); i++) {
-                        if (manageProduct.getProductList().get(i).getSoNgayConLai() <= 0) {
-                            list.add(manageProduct.getProductList().get(i));
-                        }
-                    }
-                    if (list == null) {
+                   List<Product> list = manageProduct.checkStatus();
+                    if (list.size() == 0) {
                         System.out.println("Không có sản phẩm nào hết hạn");
                     } else {
                         System.out.println("Danh sách sản phẩm hết hạn");
@@ -202,8 +197,12 @@ public class MainProduct {
                     break;
                 }
                 case 0: {
-                    System.exit(0);
+                    check = false;
+                    break;
                 }
+                default:
+                    System.out.println("Mời nhập lại");
+                    break;
             }
         }
     }

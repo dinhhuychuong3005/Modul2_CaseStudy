@@ -12,11 +12,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainBill {
-    public static void main(String[] args) {
+    public static void mainBill() {
         ManageBill manageBill = new ManageBill();
         ManageProduct manageProduct = new ManageProduct();
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        boolean isMenu = true;
+        while (isMenu) {
             System.out.println("Nhập lựa chọn của bạn");
             System.out.println("1.Thêm hóa đơn");
             System.out.println("2.Hiển thị tất cả hóa đơn");
@@ -25,8 +26,8 @@ public class MainBill {
             System.out.println("0.Thoát chương trình");
             int choice = scanner.nextInt();
             scanner.nextLine();
-            switch (choice){
-                case 1:{
+            switch (choice) {
+                case 1: {
                     Bill bill = new Bill();
                     bill = InOutPutBill.input();
                     System.out.println("Nhập vào mã hóa đơn");
@@ -36,7 +37,7 @@ public class MainBill {
 
                     break;
                 }
-                case 2:{
+                case 2: {
                     try {
                         BillFile.readFromFile("bill.csv");
                     } catch (IOException e) {
@@ -47,21 +48,21 @@ public class MainBill {
                     manageBill.display(manageBill.getList());
                     break;
                 }
-                case 3:{
+                case 3: {
                     List<Bill> bill = new ArrayList<>();
                     System.out.println("Nhập vào tên khách hàng cần tìm");
                     String name = scanner.nextLine();
-                    bill =  manageBill.searchByName(name);
+                    bill = manageBill.searchByName(name);
                     System.out.println("Hóa đơn cần tìm là");
                     InOutPutBill.output(bill);
                     break;
                 }
-                case 4:{
+                case 4: {
                     manageBill.searchByNumberPhone();
                     break;
                 }
-                case 0:{
-                    System.exit(0);
+                case 0: {
+                    isMenu = false;
                     break;
                 }
                 default:

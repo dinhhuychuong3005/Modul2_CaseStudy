@@ -45,7 +45,7 @@ public class EmployeePartTime extends Employee implements Serializable {
 
     @Override
     public long calculateSalary() {
-        this.actualSalary =  salaryBonus + (30 * hour );
+        this.actualSalary =  salaryBonus + (30 * hour * 1000);
         return this.actualSalary;
     }
 

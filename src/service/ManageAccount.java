@@ -1,14 +1,24 @@
 package service;
 
+import Filecsv.AccountFile;
+import Filecsv.BillFile;
 import model.account.Account;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ManageAccount {
+    private final Scanner scanner = new Scanner(System.in);
     private List<Account> accounts ;
 
     public ManageAccount() {
+        try {
+            this.accounts = AccountFile.readFromFile("account.csv");
+        } catch (IOException e) {
+            this.accounts = new ArrayList<>();
+        }
     }
 
     public ManageAccount(List<Account> accounts) {
@@ -32,7 +42,21 @@ public class ManageAccount {
             }
         }
     }
-    public void login(){
-        System.out.println("");
+    public int checkUserName(String userName){
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUserName().equals(userName)){
+                return i;
+            }
+        }
+        return -1;
     }
+    public int checkPassword(String password){
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getPassword().equals(password)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }

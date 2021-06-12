@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainEmployee {
-    public static void main(String[] args) {
+    public static void mainEmployee() {
         ManageEmployee manageEmployee = new ManageEmployee();
         Scanner s = new Scanner(System.in);
-
-        while (true) {
+boolean check = true;
+        while (check) {
             System.out.println("================Menu===============");
             System.out.println("Mời bạn nhập lựa chọn");
             System.out.println("1.Hiển thị danh sách nhân viên.");
@@ -27,20 +27,20 @@ public class MainEmployee {
             System.out.println("8.Tìm kiếm nhân viên theo mã nhân viên");
             System.out.println("9.Tìm kiếm nhân viên theo tên");
             System.out.println("10.Tính lương theo mã nhân viên");
-            System.out.println("0.Exit");
+            System.out.println("0.Trở về menu");
             boolean isMenu = true;
             int choice = s.nextInt();
             s.nextLine();
             switch (choice) {
                 case 1: {
 
-                    while (isMenu){
+                    while (isMenu) {
                         System.out.println("1.Hiển thị tất cả nhân viên");
                         System.out.println("2.Hiển thị nhân viên fulltime");
                         System.out.println("3.Hiển thị tất cả parttime");
                         System.out.println("0.Quay lại menu chính");
                         int line = s.nextInt();
-
+                        s.nextLine();
                         switch (line) {
                             case 1: {
                                 manageEmployee.display(manageEmployee.getList());
@@ -77,10 +77,11 @@ public class MainEmployee {
                                 System.out.println("Mời nhập lại");
                                 break;
                         }
-                    } break;
+                    }
+                    break;
                 }
                 case 2: {
-                    while (isMenu){
+                    while (isMenu) {
                         System.out.println("1.Thêm nhân viên fulltime");
                         System.out.println("2.Thêm nhân viên parttime");
                         System.out.println("0.Quay lại menu chính");
@@ -107,7 +108,8 @@ public class MainEmployee {
                                 System.out.println("Mời nhập lại");
                                 break;
                         }
-                    } break;
+                    }
+                    break;
                 }
 
                 case 3: {
@@ -129,7 +131,7 @@ public class MainEmployee {
                     manageEmployee.sortByNameByAge();
                     manageEmployee.display(manageEmployee.getList());
                     try {
-                        EmployeeFile.writeToFile("Employee.csv",manageEmployee.getList());
+                        EmployeeFile.writeToFile("Employee.csv", manageEmployee.getList());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -161,9 +163,11 @@ public class MainEmployee {
                     if (manageEmployee.checkById(id) == -1) {
                         System.out.println("Không có nhân viên này");
                     } else {
-                        System.out.println("Nhập vào số giờ làm thêm của nhân viên");
-                        long hour = s.nextLong();
+
                         if (manageEmployee.getList().get(manageEmployee.checkById(id)) instanceof EmployeeFullTime) {
+                            System.out.println("Nhập vào số giờ làm thêm của nhân viên");
+                            long hour = s.nextLong();
+                            s.nextLine();
                             EmployeeFullTime employeeFullTime = (EmployeeFullTime) manageEmployee.getList().get(manageEmployee.checkById(id));
                             employeeFullTime.setHour(hour);
                             System.out.println(employeeFullTime.toString3());
@@ -173,6 +177,8 @@ public class MainEmployee {
                                 e.printStackTrace();
                             }
                         } else if (manageEmployee.getList().get(manageEmployee.checkById(id)) instanceof EmployeePartTime) {
+                            System.out.println("Nhập vào số giờ làm của nhân viên");
+                            long hour = s.nextLong();
                             EmployeePartTime employeePartTime = (EmployeePartTime) manageEmployee.getList().get(manageEmployee.checkById(id));
                             employeePartTime.setHour(hour);
                             System.out.println(employeePartTime.toString4());
@@ -186,7 +192,7 @@ public class MainEmployee {
                     break;
                 }
                 case 0: {
-                    System.exit(0);
+                    check = false;
                     break;
                 }
                 default:
