@@ -87,7 +87,7 @@ boolean check = true;
                         System.out.println("2.Thêm nhân viên parttime");
                         System.out.println("0.Quay lại menu chính");
                         int a = s.nextInt();
-                        s.nextLine();
+
                         switch (a) {
                             case 1: {
                                 manageEmployee.addEmployFullTime();
@@ -110,15 +110,20 @@ boolean check = true;
                                 break;
                         }
                     }
+                    s.nextLine();
                     break;
                 }
 
                 case 3: {
                     manageEmployee.editStatus();
+                    System.out.println("Sau khi sửa :");
+                    manageEmployee.display(manageEmployee.getList());
                     break;
                 }
                 case 4: {
                     manageEmployee.editById();
+                    System.out.println("Sau khi sửa :");
+                    manageEmployee.display(manageEmployee.getList());
                     break;
                 }
                 case 5:

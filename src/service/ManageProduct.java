@@ -150,7 +150,7 @@ public Product searchById(String id){
             switch (b) {
                 case 1: {
                     List<Product> productList1 = printVinamilk();
-                    if (productList1 == null) {
+                    if (productList1.size() == 0) {
                         System.out.println("Không có sản phẩm nào thuộc hãng vinamilk");
                     } else {
                         InOutPutProduct.outPut(productList1);
@@ -159,7 +159,7 @@ public Product searchById(String id){
                 }
                 case 2: {
                     List<Product> productList1 = printDutchLady();
-                    if (productList1 == null) {
+                    if (productList1.size() == 0) {
                         System.out.println("Không có sản phẩm nào thuộc hãng Dutch Lady");
                     } else {
                         InOutPutProduct.outPut(productList1);
@@ -168,7 +168,7 @@ public Product searchById(String id){
                 }
                 case 3: {
                     List<Product> productList1 = printNutifood();
-                    if (productList1 == null) {
+                    if (productList1.size() == 0) {
                         System.out.println("Không có sản phẩm nào thuộc hãng Nutifood");
                     } else {
                         InOutPutProduct.outPut(productList1);
@@ -180,7 +180,6 @@ public Product searchById(String id){
                     break;
                 }
             }
-            break;
         }
     }
     public List<Product> searchByPrice(){

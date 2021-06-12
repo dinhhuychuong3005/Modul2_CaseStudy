@@ -59,7 +59,7 @@ public class ManageBill {
         }
     }
 
-    public List<Bill> searchByName(String s) {
+    public List<Bill> searchByName() {
         Scanner scanner = new Scanner(System.in);
         List<Bill> list1 = new ArrayList<>();
         System.out.println("Nhập vào tên khách hàng cần tìm");

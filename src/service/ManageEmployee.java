@@ -142,6 +142,11 @@ public class ManageEmployee {
             System.out.println("Không tồn tại mã nhân viên này");
         } else {
             list.get(checkById(id)).setStatus("Đã nghỉ");
+            try {
+                employeeFile.writeToFile("Employee.csv",list);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println("Đã sửa xong");
         }
     }
@@ -184,6 +189,7 @@ public class ManageEmployee {
             System.out.println("Bạn có chắc muốn xóa không?");
             System.out.println("1.Có \t 2.Không");
             int op = scanner.nextInt();
+            scanner.nextLine();
             if (op == 1) {
                 list.remove(index);
                 System.out.println("Dánh sách nhân viên sau khi xóa các nhân viên đã nghỉ là:");
@@ -240,9 +246,4 @@ public class ManageEmployee {
             display(employees);
         }
     }
-
-    public void calculateSalary() {
-
-    }
-
 }

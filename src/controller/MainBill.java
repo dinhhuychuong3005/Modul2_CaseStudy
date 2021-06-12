@@ -41,7 +41,7 @@ public class MainBill {
                     }while (manageBill.checkId(maHd) != -1);
                     bill.setId(maHd);
                     manageBill.add(bill);
-
+                    System.out.println("Đã thêm thành công");
                     break;
                 }
                 case 2: {
@@ -55,9 +55,7 @@ public class MainBill {
                 }
                 case 3: {
                     List<Bill> bill = new ArrayList<>();
-                    System.out.println("Nhập vào tên khách hàng cần tìm");
-                    String name = scanner.nextLine();
-                    bill = manageBill.searchByName(name);
+                    bill = manageBill.searchByName();
                     System.out.println("Hóa đơn cần tìm là");
                     InOutPutBill.output(bill);
                     break;

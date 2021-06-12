@@ -1,6 +1,9 @@
 package model.product;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Product implements Serializable {
     private String maSp;
@@ -83,6 +86,16 @@ public class Product implements Serializable {
     }
 
     public long getSoNgayConLai() {
+        Date date1 = new Date();
+        Date date2 = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            date2 = simpleDateFormat.parse(getHsd());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long value = date2.getTime() - date1.getTime();
+        this.soNgayConLai = (value / (24 * 60 * 60 * 1000));
         return soNgayConLai;
     }
 
@@ -91,16 +104,16 @@ public class Product implements Serializable {
     }
 
     public String toStringAll(){
-        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên : " + String.format("%-16s|",name) + " Số lượng: " + String.format("%-6s|",quantity) + " Đơn giá: " + String.format("%-12s|",price) + " Nguồn gốc: " + String.format("%-12s|",brand) + " Ngày sản xuất: " + String.format("%-11s|",nsx) + " Hạn sử dụng: " + String.format("%-11s|",hsd);
+        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên : " + String.format("%-16s|",name) + " Số lượng: " + String.format("%-6s|",quantity) + " Đơn giá: " + String.format("%-12s|",price) + " Hãng sản xuất: " + String.format("%-12s|",brand) + " Ngày sản xuất: " + String.format("%-11s|",nsx) + " Hạn sử dụng: " + String.format("%-11s|",hsd);
     }
 
     public String toStringEXP(){
-        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên: " + String.format("%-14s|",name) + " Ngày sản xuất: " + String.format("%-11s|",nsx) + " Hạn sử dụng: " + String.format("%-11s|",hsd) + " Còn lại: " + String.format("%-5s",soNgayConLai) + " ngày " + " |";
+        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên: " + String.format("%-14s|",name) + " Ngày sản xuất: " + String.format("%-11s|",nsx) + " Hạn sử dụng: " + String.format("%-11s|",hsd) + " Còn lại: " + String.format("%-5s",getSoNgayConLai()) + " ngày " + " |";
     }
 
     @Override
     public String toString() {
-        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên : " + String.format("%-16s|",name) + " Số lượng: " + String.format("%-6s|",quantity) + " Đơn giá: " + String.format("%-12s|",price) + " Nguồn gốc: " + String.format("%-12s|",brand);
+        return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên : " + String.format("%-16s|",name) + " Số lượng: " + String.format("%-6s|",quantity) + " Đơn giá: " + String.format("%-12s|",price) + " Hãng sản xuất: " + String.format("%-12s|",brand);
     }
 
     public String toStringCSV(){

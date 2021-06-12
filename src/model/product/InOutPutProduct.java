@@ -60,10 +60,6 @@ public class InOutPutProduct {
             }
         } while ((!Validate.valid(hsd, Validate.DATE_REGEX)) || (date2.getTime() < date1.getTime()));
         product.setHsd(hsd);
-        Date date = new Date();
-        long value = date2.getTime() - date.getTime();
-        long soNgayConLai = (value / (24 * 60 * 60 * 1000) + 1);
-        product.setSoNgayConLai(soNgayConLai);
         return product;
     }
     public static void outPutProduct(List<Product> arr){

@@ -178,6 +178,7 @@ public class MainProduct {
                 }
                 case 9: {
                    List<Product> list = manageProduct.checkStatus();
+                   InOutPutProduct.outPutProduct(manageProduct.getProductList());
                     if (list.size() == 0) {
                         System.out.println("Không có sản phẩm nào hết hạn");
                     } else {

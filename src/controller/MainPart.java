@@ -37,7 +37,7 @@ public class MainPart {
                             System.out.println("Sai mật khẩu hoặc tên tài khoản, mời nhập lại!");
                         }
                     }while ((manageAccount.checkUserName(username)== -1) || (manageAccount.checkPassword(password) == -1));
-                    if ((manageAccount.checkUserName(username)!= -1) || (manageAccount.checkPassword(password) != -1)){
+                    if ((manageAccount.checkUserName(username)!= -1) && (manageAccount.checkPassword(password) != -1)){
                         while (isMenu) {
                             System.out.println("==========HELLO==============");
                             System.out.println("Mời bạn nhập lựa chọn");
