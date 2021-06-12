@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class MainPart {
     public static void main(String[] args) {
+        AccountFile accountFile = new AccountFile();
         Scanner scanner = new Scanner(System.in);
         ManageAccount manageAccount = new ManageAccount();
         boolean isMenu = true;
@@ -72,7 +73,7 @@ public class MainPart {
                     Account account = InOutPutAccount.input();
                     manageAccount.add(account);
                     try {
-                        AccountFile.writeToFile("account.csv",manageAccount.getAccounts());
+                        accountFile.writeToFile("account.csv",manageAccount.getAccounts());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

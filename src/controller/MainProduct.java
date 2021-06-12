@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class MainProduct {
     public static void mainProduct() {
+        ProductFile productFile = new ProductFile();
         boolean check = true;
         Scanner scanner = new Scanner(System.in);
         ManageProduct manageProduct = new ManageProduct();
@@ -63,7 +64,7 @@ public class MainProduct {
                                 product.setBrand("Vinamilk");
                                 manageProduct.add(product);
                                 try {
-                                    ProductFile.writeToFile("Product.csv", manageProduct.getProductList());
+                                    productFile.writeToFile("Product.csv", manageProduct.getProductList());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -84,7 +85,7 @@ public class MainProduct {
                                 product.setBrand("Dutch Lady");
                                 manageProduct.add(product);
                                 try {
-                                    ProductFile.writeToFile("Product.csv", manageProduct.getProductList());
+                                    productFile.writeToFile("Product.csv", manageProduct.getProductList());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -105,7 +106,7 @@ public class MainProduct {
                                 product.setBrand("Nutifood");
                                 manageProduct.add(product);
                                 try {
-                                    ProductFile.writeToFile("Product.csv", manageProduct.getProductList());
+                                    productFile.writeToFile("Product.csv", manageProduct.getProductList());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -190,7 +191,7 @@ public class MainProduct {
                     System.out.println("Sau khi sắp xếp");
                     InOutPutProduct.outPut(manageProduct.getProductList());
                     try {
-                        ProductFile.writeToFile("Product.csv", manageProduct.getProductList());
+                        productFile.writeToFile("Product.csv", manageProduct.getProductList());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

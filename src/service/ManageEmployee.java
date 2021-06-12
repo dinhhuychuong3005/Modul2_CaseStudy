@@ -11,13 +11,14 @@ import java.io.IOException;
 import java.util.*;
 
 public class ManageEmployee {
+    EmployeeFile employeeFile = new EmployeeFile();
     Scanner scanner = new Scanner(System.in);
     private List<Employee> list = new ArrayList<>();
     InOutEmployee inOutEmployee = new InOutEmployee();
 
     public ManageEmployee() {
         try {
-            this.list = EmployeeFile.readFromFile("Employee.csv");
+            this.list = employeeFile.readFromFile("Employee.csv");
         } catch (IOException e) {
             this.list = new ArrayList<>();
         }
@@ -49,7 +50,7 @@ public class ManageEmployee {
         employee.setId(id);
         list.add(employee);
         try {
-            EmployeeFile.writeToFile("Employee.csv", list);
+            employeeFile.writeToFile("Employee.csv", list);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +70,7 @@ public class ManageEmployee {
         employee.setId(id);
         list.add(employee);
         try {
-            EmployeeFile.writeToFile("Employee.csv", list);
+            employeeFile.writeToFile("Employee.csv", list);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,7 +129,7 @@ public class ManageEmployee {
             System.out.println("Done!");
         }
         try {
-            EmployeeFile.writeToFile("Employee.csv", list);
+            employeeFile.writeToFile("Employee.csv", list);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,7 +161,7 @@ public class ManageEmployee {
                 System.out.println("Danh sách nhân viên sau khi xóa:");
                 display(list);
                 try {
-                    EmployeeFile.writeToFile("Employee.csv", list);
+                    employeeFile.writeToFile("Employee.csv", list);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -188,7 +189,7 @@ public class ManageEmployee {
                 System.out.println("Dánh sách nhân viên sau khi xóa các nhân viên đã nghỉ là:");
                 display(list);
                 try {
-                    EmployeeFile.writeToFile("Employee.csv", list);
+                    employeeFile.writeToFile("Employee.csv", list);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -214,7 +215,7 @@ public class ManageEmployee {
             }
         });
         try {
-            EmployeeFile.writeToFile("Employee.csv", list);
+            employeeFile.writeToFile("Employee.csv", list);
         } catch (IOException e) {
             e.printStackTrace();
         }

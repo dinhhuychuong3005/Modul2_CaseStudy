@@ -8,24 +8,29 @@ import service.ManageBill;
 import service.ManageProduct;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class BillFile {
-    public static void writeToFile(String path, List<Bill> list) throws IOException {
+public class BillFile implements WriteReadFile<Bill>{
+    @Override
+    public void writeToFile(String path, List<Bill> list) throws IOException {
         FileWriter fw = new FileWriter(path);
         BufferedWriter bf = new BufferedWriter(fw);
-        String str = "MãHóaĐơn,Tenkhachhang,sốđiệnthoại,,mã sản phẩm,tênsp,sốlượng,tổngtiền\n";
+        String str = "MãHóaĐơn,Ngày nhập hóa đơn,Tenkhachhang,sốđiệnthoại,,mã sản phẩm,tênsp,sốlượng,tổngtiền\n";
         for (Bill e : list) {
-            str += e.getId() + "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + "," + e.getProduct().getMaSp() +
+            str +=  e.getDate() +"," + e.getId() +  "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + "," + e.getProduct().getMaSp() +
                     "," + e.getProduct().getName() + "," + e.getQuantity() + "," + e.getTotal() + "\n";
         }
         bf.write(str);
         bf.close();
         fw.close();
     }
+@Override
+    public List<Bill> readFromFile(String path) throws IOException{
 
-    public static List<Bill> readFromFile(String path) throws IOException, ClassNotFoundException {
         List<Bill> billList = new ArrayList<>();
         ManageProduct manageProduct = new ManageProduct();
         FileReader fr = new FileReader(path);
@@ -33,9 +38,14 @@ public class BillFile {
         String line = bf.readLine();
         while ((line = bf.readLine()) != null) {
             String[] value = line.split(",");
+            String[] date = value[0].split("-");
+            int year = Integer.parseInt(date[0]);
+            int month = Integer.parseInt(date[1]);
+            int day = Integer.parseInt(date[2]);
             Product product1 = manageProduct.searchById(value[3]);
-            billList.add(new Bill(value[0], value[1], value[2], product1, Integer.parseInt(value[5]), Double.parseDouble(value[6])));
+           billList.add(new Bill(LocalDate.of(year,month,day),value[1], value[2], value[3], product1, Integer.parseInt(value[6]), Double.parseDouble(value[7])));
         }
-        return billList;
+            return billList;
+        }
     }
-}
+

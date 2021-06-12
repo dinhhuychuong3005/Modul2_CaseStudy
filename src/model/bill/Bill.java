@@ -3,8 +3,11 @@ package model.bill;
 import model.product.Product;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Bill implements Serializable {
+    private LocalDate date;
     private String id;
     private String nameCustomer;
     private String numberPhoneCus;
@@ -15,15 +18,23 @@ public class Bill implements Serializable {
     public Bill() {
     }
 
-    public Bill(String id, String nameCustomer, String numberPhoneCus, Product product, int quantity, double total) {
+    public Bill(LocalDate date,String id, String nameCustomer, String numberPhoneCus, Product product, int quantity, double total) {
         this.id = id;
         this.nameCustomer = nameCustomer;
         this.numberPhoneCus = numberPhoneCus;
         this.product = product;
         this.quantity = quantity;
         this.total = total;
+        this.date = date;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     public String getId() {
         return id;
@@ -75,7 +86,7 @@ public class Bill implements Serializable {
 
     @Override
     public String toString() {
-        return "Bill: | " + "mã bill: " + id + " | " +
+        return "Bill: | " + "Ngày nhập hóa đơn: " + date + " | " + "mã bill: " + id + " | " +
         "tên KH: " + nameCustomer + " | "  + " number phone: " + numberPhoneCus + " | " +
                 "tên sản phẩm: " + product.getName() +  " | " + "mã sản phẩm: " + product.getMaSp() + " | " +
                 "số lượng: " + quantity +  " | " + "tổng giá: " + getTotal();

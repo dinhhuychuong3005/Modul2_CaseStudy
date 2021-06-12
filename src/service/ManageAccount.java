@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class ManageAccount {
     private final Scanner scanner = new Scanner(System.in);
     private List<Account> accounts ;
-
+AccountFile accountFile = new AccountFile();
     public ManageAccount() {
         try {
-            this.accounts = AccountFile.readFromFile("account.csv");
+            this.accounts = accountFile.readFromFile("account.csv");
         } catch (IOException e) {
             this.accounts = new ArrayList<>();
         }

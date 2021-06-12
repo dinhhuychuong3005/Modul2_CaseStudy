@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class MainBill {
     public static void mainBill() {
+        BillFile billFile = new BillFile();
         ManageBill manageBill = new ManageBill();
         ManageProduct manageProduct = new ManageProduct();
         Scanner scanner = new Scanner(System.in);
@@ -31,18 +32,22 @@ public class MainBill {
                     Bill bill = new Bill();
                     bill = InOutPutBill.input();
                     System.out.println("Nhập vào mã hóa đơn");
-                    String maSp = scanner.nextLine();
-                    bill.setId(maSp);
+                    String maHd;
+                    do {
+                        maHd = scanner.nextLine();
+                        if (manageBill.checkId(maHd) != -1){
+                            System.out.println("Mã hóa đơn đã tồn tại, mời nhập mã khác");
+                        }
+                    }while (manageBill.checkId(maHd) != -1);
+                    bill.setId(maHd);
                     manageBill.add(bill);
 
                     break;
                 }
                 case 2: {
                     try {
-                        BillFile.readFromFile("bill.csv");
+                        billFile.readFromFile("bill.csv");
                     } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                     manageBill.display(manageBill.getList());

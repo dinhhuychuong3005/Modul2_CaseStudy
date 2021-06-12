@@ -8,8 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeFile {
-    public static void writeToFile(String path, List<Employee> list) throws IOException {
+public class EmployeeFile implements WriteReadFile <Employee>{
+    @Override
+    public void writeToFile(String path, List<Employee> list) throws IOException {
         FileWriter fw = new FileWriter(path);
         BufferedWriter bf = new BufferedWriter(fw);
         String str = "ID,Name,Gender,Age,Email,NumberPhone,basicSalary,Status,typeEmployee,actualSalary\n";
@@ -30,7 +31,8 @@ public class EmployeeFile {
         bf.close();
         fw.close();
     }
-    public static List<Employee> readFromFile(String path) throws IOException {
+    @Override
+    public List<Employee> readFromFile(String path) throws IOException {
         List<Employee> employeeList = new ArrayList<>();
         FileReader fr = new FileReader(path);
         BufferedReader bf = new BufferedReader(fr);

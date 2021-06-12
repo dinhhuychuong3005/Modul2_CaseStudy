@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class MainEmployee {
     public static void mainEmployee() {
+        EmployeeFile employeeFile = new EmployeeFile();
         ManageEmployee manageEmployee = new ManageEmployee();
         Scanner s = new Scanner(System.in);
 boolean check = true;
@@ -131,7 +132,7 @@ boolean check = true;
                     manageEmployee.sortByNameByAge();
                     manageEmployee.display(manageEmployee.getList());
                     try {
-                        EmployeeFile.writeToFile("Employee.csv", manageEmployee.getList());
+                        employeeFile.writeToFile("Employee.csv", manageEmployee.getList());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -172,7 +173,7 @@ boolean check = true;
                             employeeFullTime.setHour(hour);
                             System.out.println(employeeFullTime.toString3());
                             try {
-                                EmployeeFile.writeToFile("Employee.csv", manageEmployee.getList());
+                                employeeFile.writeToFile("Employee.csv", manageEmployee.getList());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -183,7 +184,7 @@ boolean check = true;
                             employeePartTime.setHour(hour);
                             System.out.println(employeePartTime.toString4());
                             try {
-                                EmployeeFile.writeToFile("Employee.csv", manageEmployee.getList());
+                                employeeFile.writeToFile("Employee.csv", manageEmployee.getList());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

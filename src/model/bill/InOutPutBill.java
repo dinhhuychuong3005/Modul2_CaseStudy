@@ -7,6 +7,8 @@ import service.ManageBill;
 import service.ManageProduct;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +16,7 @@ public class InOutPutBill {
 
     static final Scanner scanner = new Scanner(System.in);
     public static Bill input(){
+        ProductFile productFile = new ProductFile();
         ManageProduct manageProduct = new ManageProduct();
         Bill bill = new Bill();
         System.out.println("Nhập tên khách hàng");
@@ -45,10 +48,12 @@ public class InOutPutBill {
         int a = (manageProduct.getProductList().get(manageProduct.searchID(id)).getQuantity() - quantity);
         manageProduct.getProductList().get(manageProduct.searchID(id)).setQuantity(a);
         try {
-            ProductFile.writeToFile("Product.csv",manageProduct.getProductList());
+            productFile.writeToFile("Product.csv",manageProduct.getProductList());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        LocalDate date = LocalDate.now();
+        bill.setDate(date);
         return bill;
     }
     public static void output(List<Bill> arr){

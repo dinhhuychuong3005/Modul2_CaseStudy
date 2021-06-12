@@ -6,8 +6,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductFile {
-    public static void writeToFile(String path, List<Product> list) throws IOException {
+public class ProductFile implements WriteReadFile<Product>{
+    @Override
+    public  void writeToFile(String path, List<Product> list) throws IOException {
         FileWriter fw = new FileWriter(path);
         BufferedWriter bf = new BufferedWriter(fw);
         String str = "maSp,name,số lượng,price,nsx,hsd,brand,số ngày còn lại\n";
@@ -19,7 +20,8 @@ public class ProductFile {
         bf.close();
         fw.close();
     }
-    public static List<Product> readFromFile(String path) throws IOException {
+    @Override
+    public  List<Product> readFromFile(String path) throws IOException {
         List<Product> list = new ArrayList<>();
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);

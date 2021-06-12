@@ -9,10 +9,10 @@ import java.util.*;
 public class ManageProduct {
     Scanner scanner = new Scanner(System.in);
     private List<Product> productList = new ArrayList<>();
-
+ProductFile productFile = new ProductFile();
     public ManageProduct() {
         try {
-            this.productList = ProductFile.readFromFile("Product.csv");
+            this.productList = productFile.readFromFile("Product.csv");
         } catch (IOException e) {
             this.productList = new ArrayList<>();
         }
@@ -61,7 +61,7 @@ public class ManageProduct {
             product.setMaSp(id);
             productList.set(searchID(id), product);
             try {
-                ProductFile.writeToFile("Product.csv", productList);
+                productFile.writeToFile("Product.csv", productList);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -84,7 +84,7 @@ public class ManageProduct {
                 System.out.println("Danh sách sản phẩm trong kho sau khi xóa là:");
                 InOutPutProduct.outPut(productList);
                 try {
-                    ProductFile.writeToFile("Product.csv", productList);
+                    productFile.writeToFile("Product.csv", productList);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
