@@ -24,17 +24,20 @@ public class BillFile implements WriteReadFile<Bill> {
         String str = "Ngày nhập hóa đơn,mã hóa đơn,tên kh,sdt kh,mã SP,Tên sp,số lượng,tổng giá\n";
         for (Bill e : list) {
             str += e.getDate() + "," + e.getId() + "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + ",";
-            for (Product product : e.getProducts()) {
-                str += product.getMaSp() + "/";
+            for (int i = 0; i < e.getProducts().size() - 1; i++) {
+                str += e.getProducts().get(i).getMaSp() + "/";
             }
+            str += e.getProducts().get(e.getProducts().size() - 1).getMaSp();
             str += ",";
-            for (Product product : e.getProducts()) {
-                str += product.getName() + "/";
+            for (int i = 0; i < e.getProducts().size() - 1; i++) {
+                str += e.getProducts().get(i).getName() + "/";
             }
+            str += e.getProducts().get(e.getProducts().size() - 1).getName();
             str += ",";
-            for (Integer i : e.getQuantity()) {
-                str += i + "/";
+            for (int i = 0; i < e.getQuantity().size() - 1; i++) {
+                str += e.getQuantity().get(i) + "/";
             }
+            str += e.getQuantity().get(e.getQuantity().size() - 1);
             str += "," + e.getTotal() + "\n";
         }
         bf.write(str);

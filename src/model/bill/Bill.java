@@ -93,17 +93,20 @@ public class Bill implements Serializable {
     public String toString() {
         String str = "Bill: | " + "Ngày nhập hóa đơn: " + date + " | " + "mã bill: " + id + " | " +
         "tên KH: " + nameCustomer + " | "  + " number phone: " + numberPhoneCus + " | " + "mã sản phẩm: ";
-        for (Product product : this.products) {
-            str += product.getMaSp() + "/";
+        for (int i = 0; i < this.products.size() - 1; i++) {
+            str += this.products.get(i).getMaSp() + "/";
         }
+        str += this.products.get(this.products.size() - 1).getMaSp();
         str += " | " + "Tên sản phẩm: ";
-        for (Product p: this.products) {
-            str += p.getName() + "/";
+        for (int i = 0; i < this.products.size() - 1; i++) {
+            str += this.products.get(i).getName() + "/";
         }
+        str += this.products.get(this.products.size() - 1).getName();
         str += " | " + "số lượng: ";
-        for (Integer i : this.quantity) {
-            str += i  + "/";
+        for (int i = 0; i < this.quantity.size() - 1; i++) {
+            str += this.quantity.get(i) + "/";
         }
+        str += this.quantity.get(this.products.size() - 1);
         str +=   " | " + "tổng giá: " + getTotal();
         return str;
 
