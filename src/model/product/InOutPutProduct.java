@@ -72,4 +72,5 @@ public class InOutPutProduct {
             System.out.println(arr.get(i).toString());
         }
     }
+
 }

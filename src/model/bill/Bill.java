@@ -106,5 +106,6 @@ public class Bill implements Serializable {
         }
         str +=   " | " + "tổng giá: " + getTotal();
         return str;
+
     }
 }

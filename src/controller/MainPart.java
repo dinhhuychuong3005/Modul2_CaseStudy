@@ -92,7 +92,7 @@ public class MainPart {
                     break;
                 }
                 default:
-                    System.out.println("Không có chức năng bạn cần tìm");
+                    System.out.println("Không có chức năng bạn cần tìm. Mời nhập lại!");
                     break;
             }
         }

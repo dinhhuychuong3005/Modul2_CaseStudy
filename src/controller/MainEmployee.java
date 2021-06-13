@@ -14,7 +14,7 @@ public class MainEmployee {
         EmployeeFile employeeFile = new EmployeeFile();
         ManageEmployee manageEmployee = new ManageEmployee();
         Scanner s = new Scanner(System.in);
-boolean check = true;
+        boolean check = true;
         while (check) {
             System.out.println("================Menu===============");
             System.out.println("Mời bạn nhập lựa chọn");
@@ -202,7 +202,7 @@ boolean check = true;
                     break;
                 }
                 default:
-                    System.out.println("Mời nhập lại");
+                    System.out.println("Mời nhập lại!");
                     break;
             }
         }

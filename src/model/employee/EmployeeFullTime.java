@@ -1,6 +1,6 @@
 package model.employee;
 
-import model.employee.Employee;
+
 
 import java.io.Serializable;
 
@@ -67,4 +67,5 @@ public class EmployeeFullTime extends Employee implements Serializable {
                 ", typeEmployee='" + typeEmployee + " | "  +
                 "actualSalary"  + calculateSalary();
     }
+
 }

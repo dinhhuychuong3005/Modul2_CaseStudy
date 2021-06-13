@@ -115,8 +115,4 @@ public class Product implements Serializable {
     public String toString() {
         return "Thông tin: | " + "Mã: " + String.format("%-8s|",maSp) + " Tên : " + String.format("%-16s|",name) + " Số lượng: " + String.format("%-6s|",quantity) + " Đơn giá: " + String.format("%-12s|",price) + " Hãng sản xuất: " + String.format("%-12s|",brand);
     }
-
-    public String toStringCSV(){
-        return maSp+","+name+","+quantity+","+price+","+nsx+","+hsd+","+brand+","+soNgayConLai+"\n";
-    }
 }

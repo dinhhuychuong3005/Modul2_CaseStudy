@@ -96,11 +96,11 @@ public abstract class Employee implements Serializable {
     public String toString() {
         return "Employee: | " +
                 "id='" + id + " | " +
-                ", name='" + name + " | " +
-                ", gender=" + gender + " | " +
-                ", age=" + age + " | " +
-                ", email='" + email + " | " +
-                ", numberPhone='" + numberPhone + " | " +
-                ", Status= " + status;
+                " name='" + name + " | " +
+                " gender=" + gender + " | " +
+                " age=" + age + " | " +
+                " email='" + email + " | " +
+                " numberPhone='" + numberPhone + " | " +
+                " Status= " + status;
     }
 }

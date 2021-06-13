@@ -15,7 +15,6 @@ public class MainBill {
     public static void mainBill() {
         BillFile billFile = new BillFile();
         ManageBill manageBill = new ManageBill();
-        ManageProduct manageProduct = new ManageProduct();
         Scanner scanner = new Scanner(System.in);
         boolean isMenu = true;
         while (isMenu) {

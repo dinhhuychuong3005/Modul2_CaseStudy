@@ -69,7 +69,7 @@ public class BillFile implements WriteReadFile<Bill> {
                 Integer integer = Integer.parseInt(quantity[i]);
                 integerList.add(integer);
             }
-                    billList.add(new Bill(LocalDate.of(year, month, day), value[1], value[2], value[3], productList, integerList, Double.parseDouble(value[7])));
+            billList.add(new Bill(LocalDate.of(year, month, day), value[1], value[2], value[3], productList, integerList, Double.parseDouble(value[7])));
         }
         return billList;
     }

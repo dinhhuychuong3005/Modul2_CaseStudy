@@ -1,7 +1,5 @@
 package model.employee;
 
-import model.employee.Employee;
-
 import java.io.Serializable;
 
 public class EmployeePartTime extends Employee implements Serializable {

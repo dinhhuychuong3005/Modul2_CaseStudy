@@ -7,7 +7,6 @@ import service.ManageProduct;
 import Validate.Validate;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +29,7 @@ public class MainProduct {
             System.out.println("8. Xem tình trạng hàng hóa theo mã.");
             System.out.println("9. Xem tình trạng tất cả hàng hóa trong kho.");
             System.out.println("10. Sắp xếp hàng hóa theo giá và tên.");
-            System.out.println("0. Thoát.");
+            System.out.println("0. Trở về menu chính.");
             boolean isMenu = true;
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -50,7 +49,7 @@ public class MainProduct {
                         scanner.nextLine();
                         switch (pr) {
                             case 1: {
-                                Product product = new Product();
+                                Product product;
                                 product = InOutPutProduct.inputProduct();
                                 System.out.println("Nhập vào mã sản phẩm theo định dạng VNMxxx");
                                 String id;
@@ -71,7 +70,7 @@ public class MainProduct {
                                 break;
                             }
                             case 2: {
-                                Product product = new Product();
+                                Product product ;
                                 product = InOutPutProduct.inputProduct();
                                 System.out.println("Nhập vào mã sản phẩm theo định dạng DLxxx");
                                 String id;
@@ -92,7 +91,7 @@ public class MainProduct {
                                 break;
                             }
                             case 3: {
-                                Product product = new Product();
+                                Product product;
                                 product = InOutPutProduct.inputProduct();
                                 System.out.println("Nhập vào mã sản phẩm theo định dạng NTFxxx");
                                 String id;

@@ -20,6 +20,7 @@ public class ProductFile implements WriteReadFile<Product>{
         bf.close();
         fw.close();
     }
+
     @Override
     public  List<Product> readFromFile(String path) throws IOException {
         List<Product> list = new ArrayList<>();

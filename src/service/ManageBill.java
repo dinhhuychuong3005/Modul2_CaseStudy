@@ -1,14 +1,11 @@
 package service;
 
 import Filecsv.BillFile;
-import Filecsv.EmployeeFile;
 import model.bill.Bill;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 
 
 public class ManageBill {
@@ -30,7 +27,7 @@ public class ManageBill {
     public ManageBill() {
         try {
             this.list = billFile.readFromFile("bill.csv");
-        } catch (IOException  e) {
+        } catch (IOException e) {
             this.list = new ArrayList<>();
         }
     }
@@ -43,7 +40,7 @@ public class ManageBill {
 
     public int checkId(String id) {
         for (int i = 0; i < list.size(); i++) {
-            if (id.equals(list.get(i).getId())){
+            if (id.equals(list.get(i).getId())) {
                 return i;
             }
         }

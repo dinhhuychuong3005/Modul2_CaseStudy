@@ -225,19 +225,20 @@ public class ManageProduct {
             }
         });
     }
-    public void checkQuantity(){
+
+    public void checkQuantity() {
         List<Product> products = new ArrayList<>();
         boolean check = false;
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getQuantity() <= 0){
+            if (productList.get(i).getQuantity() <= 0) {
                 check = true;
                 products.add(productList.get(i));
             }
         }
-        if (check == true){
+        if (check == true) {
             System.out.println("Các sản phẩm hết hàng là: ");
             InOutPutProduct.outPut(products);
-        }else {
+        } else {
             System.out.println("Không có sản phẩm nào hết hàng");
         }
     }

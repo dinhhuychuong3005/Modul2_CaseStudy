@@ -25,7 +25,7 @@ public class ManageEmployee {
     }
 
     public ManageEmployee(List<Employee> list) {
-        this.list = new ArrayList<Employee>();
+        this.list = list;
     }
 
     public List<Employee> getList() {

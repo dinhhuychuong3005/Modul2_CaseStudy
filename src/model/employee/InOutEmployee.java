@@ -1,9 +1,6 @@
 package model.employee;
 
 import Validate.Validate;
-import model.employee.Employee;
-import model.employee.EmployeeFullTime;
-import model.employee.EmployeePartTime;
 
 import java.util.List;
 import java.util.Scanner;
@@ -26,8 +23,8 @@ public class InOutEmployee {
         System.out.println("1.Male + \t + 2.Female");
         String gender = null;
         int line = scanner.nextInt();
-        while (true){
-            switch (line){
+        while (true) {
+            switch (line) {
                 case 1:
                     gender = "Male";
                     break;
@@ -93,8 +90,8 @@ public class InOutEmployee {
         System.out.println("1.Male  \t  2.Female");
         String gender = null;
         int line = scanner.nextInt();
-        while (true){
-            switch (line){
+        while (true) {
+            switch (line) {
                 case 1:
                     gender = "Male";
                     break;
