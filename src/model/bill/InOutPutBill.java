@@ -70,7 +70,11 @@ public class InOutPutBill {
         }
         bill.setQuantity(integerList);
         bill.setProducts(products);
-
+        long total = 0;
+        for (int i = 0; i < products.size(); i++) {
+            total += (products.get(i).getPrice() * integerList.get(i));
+        }
+        bill.setTotal(total);
         LocalDate date = LocalDate.now();
         bill.setDate(date);
         return bill;

@@ -13,18 +13,19 @@ public class Bill implements Serializable {
     private String id;
     private String nameCustomer;
     private String numberPhoneCus;
-    private List<Product> products;
+    private List<Product> products ;
     private List<Integer> quantity;
     private double total;
 
     public Bill() {
     }
 
-    public Bill(LocalDate date,String id, String nameCustomer, String numberPhoneCus, List<Product> products, List<Integer> quantity, double total) {
+    public Bill(LocalDate date, String id, String nameCustomer, String numberPhoneCus, List<Product> products, List<Integer> quantity, double total) {
         this.id = id;
+        this.products = products;
         this.nameCustomer = nameCustomer;
         this.numberPhoneCus = numberPhoneCus;
-        this.products = new ArrayList<>();
+
         this.quantity = quantity;
         this.total = total;
         this.date = date;
@@ -78,10 +79,8 @@ public class Bill implements Serializable {
         this.quantity = quantity;
     }
 
+
     public double getTotal() {
-        for (int i = 0; i < this.products.size(); i++) {
-            total += (this.products.get(i).getPrice() * this.quantity.get(i));
-        }
         return total;
     }
 
@@ -92,7 +91,7 @@ public class Bill implements Serializable {
     @Override
     public String toString() {
         String str = "Bill: | " + "Ngày nhập hóa đơn: " + date + " | " + "mã bill: " + id + " | " +
-        "tên KH: " + nameCustomer + " | "  + " number phone: " + numberPhoneCus + " | " + "mã sản phẩm: ";
+                "tên KH: " + nameCustomer + " | " + " number phone: " + numberPhoneCus + " | " + "mã sản phẩm: ";
         for (int i = 0; i < this.products.size() - 1; i++) {
             str += this.products.get(i).getMaSp() + "/";
         }
@@ -107,7 +106,7 @@ public class Bill implements Serializable {
             str += this.quantity.get(i) + "/";
         }
         str += this.quantity.get(this.products.size() - 1);
-        str +=   " | " + "tổng giá: " + getTotal();
+        str += " | " + "tổng giá: " + getTotal();
         return str;
 
     }

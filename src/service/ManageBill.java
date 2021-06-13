@@ -50,7 +50,7 @@ public class ManageBill {
     public void add(Bill bill) {
         list.add(bill);
         try {
-            billFile.writeToFile("bill.csv", list);
+            billFile.writeToFile("bill.csv", this.list);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,5 +86,23 @@ public class ManageBill {
         } else {
             System.out.println("Số điện thoại không tồn tại");
         }
+    }
+    public void totalByMonth(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập vào tháng cần tính doanh số");
+        int month;
+        do {
+            month = scanner.nextInt();
+            if (month<=0 || month >12){
+                System.out.println("Mời nhập lại");
+            }
+        }while (month<=0 || month >12);
+        double total = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (month == list.get(i).getDate().getMonthValue()){
+                total += list.get(i).getTotal();
+            }
+        }
+        System.out.println("Doanh thu của tháng " + month + " là: " + total);
     }
 }

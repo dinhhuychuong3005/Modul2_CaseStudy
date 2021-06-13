@@ -23,12 +23,13 @@ public class MainBill {
             System.out.println("2.Hiển thị tất cả hóa đơn");
             System.out.println("3.Tìm kiếm hóa đơn theo tên khách hàng");
             System.out.println("4.Tìm kiếm hóa đơn theo số điện thoại khách hàng");
+            System.out.println("5.Tính tổng doanh thu theo tháng:");
             System.out.println("0.Thoát chương trình");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 1: {
-                    Bill bill = new Bill();
+                    Bill bill;
                     bill = InOutPutBill.input();
                     System.out.println("Nhập vào mã hóa đơn");
                     String maHd;
@@ -65,6 +66,10 @@ public class MainBill {
                 }
                 case 0: {
                     isMenu = false;
+                    break;
+                }
+                case 5:{
+                    manageBill.totalByMonth();
                     break;
                 }
                 default:
