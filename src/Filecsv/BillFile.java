@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BillFile implements WriteReadFile<Bill>{
+public class BillFile implements WriteReadFile<Bill> {
     @Override
     public void writeToFile(String path, List<Bill> list) throws IOException {
 
@@ -23,15 +23,27 @@ public class BillFile implements WriteReadFile<Bill>{
         BufferedWriter bf = new BufferedWriter(fw);
         String str = "Ngày nhập hóa đơn,mã hóa đơn,tên kh,sdt kh,mã SP,Tên sp,số lượng,tổng giá\n";
         for (Bill e : list) {
-            str +=  e.getDate() +"," + e.getId() +  "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + "," + e.getProduct().getMaSp() +
-                    "," + e.getProduct().getName() + "," + e.getQuantity() + "," + e.getTotal() + "\n";
+            str += e.getDate() + "," + e.getId() + "," + e.getNameCustomer() + "," + e.getNumberPhoneCus() + ",";
+            for (Product product : e.getProducts()) {
+                str += product.getMaSp() + "/";
+            }
+            str += ",";
+            for (Product product : e.getProducts()) {
+                str += product.getName() + "/";
+            }
+            str += ",";
+            for (Integer i : e.getQuantity()) {
+                str += i + "/";
+            }
+            str += "," + e.getTotal() + "\n";
         }
         bf.write(str);
         bf.close();
         fw.close();
     }
-@Override
-    public List<Bill> readFromFile(String path) throws IOException{
+
+    @Override
+    public List<Bill> readFromFile(String path) throws IOException {
 
         List<Bill> billList = new ArrayList<>();
         ManageProduct manageProduct = new ManageProduct();
@@ -44,10 +56,22 @@ public class BillFile implements WriteReadFile<Bill>{
             int year = Integer.parseInt(date[0]);
             int month = Integer.parseInt(date[1]);
             int day = Integer.parseInt(date[2]);
-            Product product1 = manageProduct.searchById(value[4]);
-           billList.add(new Bill(LocalDate.of(year,month,day),value[1], value[2], value[3], product1, Integer.parseInt(value[6]), Double.parseDouble(value[7])));
+            String[] product1 = value[4].split("/");
+            List<Product> productList = new ArrayList<>();
+            List<Integer> integerList = new ArrayList<>();
+
+            for (int i = 0; i < product1.length; i++) {
+                Product product = manageProduct.searchById(product1[i]);
+                productList.add(product);
+            }
+            String[] quantity = value[6].split("/");
+            for (int i = 0; i < quantity.length; i++) {
+                Integer integer = Integer.parseInt(quantity[i]);
+                integerList.add(integer);
+            }
+                    billList.add(new Bill(LocalDate.of(year, month, day), value[1], value[2], value[3], productList, integerList, Double.parseDouble(value[7])));
         }
-            return billList;
-        }
+        return billList;
     }
+}
 

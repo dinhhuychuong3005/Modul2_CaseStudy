@@ -4,25 +4,27 @@ import model.product.Product;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Bill implements Serializable {
     private LocalDate date;
     private String id;
     private String nameCustomer;
     private String numberPhoneCus;
-    private Product product;
-    private int quantity;
+    private List<Product> products;
+    private List<Integer> quantity;
     private double total;
 
     public Bill() {
     }
 
-    public Bill(LocalDate date,String id, String nameCustomer, String numberPhoneCus, Product product, int quantity, double total) {
+    public Bill(LocalDate date,String id, String nameCustomer, String numberPhoneCus, List<Product> products, List<Integer> quantity, double total) {
         this.id = id;
         this.nameCustomer = nameCustomer;
         this.numberPhoneCus = numberPhoneCus;
-        this.product = product;
+        this.products = new ArrayList<>();
         this.quantity = quantity;
         this.total = total;
         this.date = date;
@@ -60,24 +62,27 @@ public class Bill implements Serializable {
         this.numberPhoneCus = numberPhoneCus;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
-    public int getQuantity() {
+    public List<Integer> getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(List<Integer> quantity) {
         this.quantity = quantity;
     }
 
     public double getTotal() {
-        return this.quantity * product.getPrice();
+        for (int i = 0; i < this.products.size(); i++) {
+            total += (this.products.get(i).getPrice() * this.quantity.get(i));
+        }
+        return total;
     }
 
     public void setTotal(double total) {
@@ -86,9 +91,20 @@ public class Bill implements Serializable {
 
     @Override
     public String toString() {
-        return "Bill: | " + "Ngày nhập hóa đơn: " + date + " | " + "mã bill: " + id + " | " +
-        "tên KH: " + nameCustomer + " | "  + " number phone: " + numberPhoneCus + " | " +
-                "tên sản phẩm: " + product.getName() +  " | " + "mã sản phẩm: " + product.getMaSp() + " | " +
-                "số lượng: " + quantity +  " | " + "tổng giá: " + getTotal();
+        String str = "Bill: | " + "Ngày nhập hóa đơn: " + date + " | " + "mã bill: " + id + " | " +
+        "tên KH: " + nameCustomer + " | "  + " number phone: " + numberPhoneCus + " | " + "mã sản phẩm: ";
+        for (Product product : this.products) {
+            str += product.getMaSp() + "/";
+        }
+        str += " | " + "Tên sản phẩm: ";
+        for (Product p: this.products) {
+            str += p.getName() + "/";
+        }
+        str += " | " + "số lượng: ";
+        for (Integer i : this.quantity) {
+            str += i  + "/";
+        }
+        str +=   " | " + "tổng giá: " + getTotal();
+        return str;
     }
 }
