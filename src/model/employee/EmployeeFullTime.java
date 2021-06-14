@@ -1,7 +1,4 @@
 package model.employee;
-
-
-
 import java.io.Serializable;
 
 public class EmployeeFullTime extends Employee implements Serializable {
