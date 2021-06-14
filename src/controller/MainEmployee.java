@@ -17,18 +17,20 @@ public class MainEmployee {
         boolean check = true;
         while (check) {
             System.out.println("================Menu===============");
-            System.out.println("Mời bạn nhập lựa chọn");
-            System.out.println("1.Hiển thị danh sách nhân viên.");
-            System.out.println("2.Thêm nhân viên");
-            System.out.println("3.Cập nhật trạng thái nhân viên");
-            System.out.println("4.Sửa thông tin nhân viên theo mã nhân viên");
-            System.out.println("5.Xóa nhân viên theo trạng thái");
-            System.out.println("6.Xóa nhân viên theo mã nhân viên");
-            System.out.println("7.Sắp xếp nhân viên theo tên và theo tuổi");
-            System.out.println("8.Tìm kiếm nhân viên theo mã nhân viên");
-            System.out.println("9.Tìm kiếm nhân viên theo tên");
-            System.out.println("10.Tính lương theo mã nhân viên");
-            System.out.println("0.Trở về menu");
+            System.out.println("     Mời bạn nhập lựa chọn     ");
+            System.out.println("|---------------------------------------------|");
+            System.out.println("| 1.Hiển thị danh sách nhân viên.             |");
+            System.out.println("| 2.Thêm nhân viên                            |");
+            System.out.println("| 3.Cập nhật trạng thái nhân viên             |");
+            System.out.println("| 4.Sửa thông tin nhân viên theo mã nhân viên |");
+            System.out.println("| 5.Xóa nhân viên theo trạng thái             |");
+            System.out.println("| 6.Xóa nhân viên theo mã nhân viên           |");
+            System.out.println("| 7.Sắp xếp nhân viên theo tên và theo tuổi   |");
+            System.out.println("| 8.Tìm kiếm nhân viên theo mã nhân viên      |");
+            System.out.println("| 9.Tìm kiếm nhân viên theo tên               |");
+            System.out.println("| 10.Tính lương theo mã nhân viên             |");
+            System.out.println("| 0.Trở về menu                               |");
+            System.out.println("|---------------------------------------------|");
             boolean isMenu = true;
             int choice = s.nextInt();
             s.nextLine();
@@ -36,10 +38,12 @@ public class MainEmployee {
                 case 1: {
 
                     while (isMenu) {
-                        System.out.println("1.Hiển thị tất cả nhân viên");
-                        System.out.println("2.Hiển thị nhân viên fulltime");
-                        System.out.println("3.Hiển thị tất cả parttime");
-                        System.out.println("0.Quay lại menu chính");
+                        System.out.println("|-------------------------------|");
+                        System.out.println("| 1.Hiển thị tất cả nhân viên   |");
+                        System.out.println("| 2.Hiển thị nhân viên fulltime |");
+                        System.out.println("| 3.Hiển thị tất cả parttime    |");
+                        System.out.println("| 0.Quay lại menu chính         |");
+                        System.out.println("|-------------------------------|");
                         int line = s.nextInt();
                         s.nextLine();
                         switch (line) {
@@ -136,11 +140,7 @@ public class MainEmployee {
                     System.out.println("Danh sách nhân viên sau khi sắp xếp là:");
                     manageEmployee.sortByNameByAge();
                     manageEmployee.display(manageEmployee.getList());
-                    try {
-                        employeeFile.writeToFile("Employee.csv", manageEmployee.getList());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
                     break;
                 case 8: {
                     System.out.println("Nhập vào mã nhân viên cần tìm");

@@ -1,18 +1,12 @@
 package Filecsv;
 
 import model.bill.Bill;
-import model.employee.Employee;
-import model.employee.EmployeeFullTime;
 import model.product.Product;
 import service.ManageBill;
 import service.ManageProduct;
-
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BillFile implements WriteReadFile<Bill> {

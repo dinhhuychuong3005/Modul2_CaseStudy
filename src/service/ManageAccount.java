@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ManageAccount {
     private final Scanner scanner = new Scanner(System.in);
-    private List<Account> accounts;
+    private List<Account> accounts = new ArrayList<>();
     AccountFile accountFile = new AccountFile();
 
     public ManageAccount() {
@@ -22,7 +22,7 @@ public class ManageAccount {
     }
 
     public ManageAccount(List<Account> accounts) {
-        this.accounts = new ArrayList<>();
+        this.accounts = accounts;
     }
 
     public List<Account> getAccounts() {

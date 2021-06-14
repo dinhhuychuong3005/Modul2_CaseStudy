@@ -17,11 +17,13 @@ public class MainPart {
         boolean isMenu = true;
         while (true){
             System.out.println("==============Ứng dụng quản lý siêu thị=============");
-            System.out.println("Mời nhập lựa chọn");
-            System.out.println("1.Đăng nhập");
-            System.out.println("2.Đăng kí tài khoản");
-            System.out.println("3.Quên mật khẩu");
-            System.out.println("0.Exit");
+            System.out.println("|---------------------|");
+            System.out.println("|Mời nhập lựa chọn    |");
+            System.out.println("| 1.Đăng nhập         |");
+            System.out.println("| 2.Đăng kí tài khoản |");
+            System.out.println("| 3.Quên mật khẩu     |");
+            System.out.println("| 0.Exit              |");
+            System.out.println("|---------------------|");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice){
@@ -40,11 +42,12 @@ public class MainPart {
                     if ((manageAccount.checkUserName(username)!= -1) && (manageAccount.checkPassword(password) != -1)){
                         while (isMenu) {
                             System.out.println("==========HELLO==============");
-                            System.out.println("Mời bạn nhập lựa chọn");
-                            System.out.println("1.Quản lý nhân viên");
-                            System.out.println("2.Quản lý sản phẩm");
-                            System.out.println("3.Quản lý Bill");
-                            System.out.println("0.Đăng xuất");
+                            System.out.println("| Mời bạn nhập lựa chọn |");
+                            System.out.println("| 1.Quản lý nhân viên   |");
+                            System.out.println("| 2.Quản lý sản phẩm    |");
+                            System.out.println("| 3.Quản lý Bill        |");
+                            System.out.println("| 0.Đăng xuất           |");
+                            System.out.println("|-----------------------|");
                             int line = scanner.nextInt();
                             scanner.nextLine();
                             switch (line){

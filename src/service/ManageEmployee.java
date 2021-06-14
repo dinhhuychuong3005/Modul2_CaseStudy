@@ -220,11 +220,7 @@ public class ManageEmployee {
                     return n;
             }
         });
-        try {
-            employeeFile.writeToFile("Employee.csv", list);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void searchByName() {

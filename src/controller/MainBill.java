@@ -18,13 +18,13 @@ public class MainBill {
         Scanner scanner = new Scanner(System.in);
         boolean isMenu = true;
         while (isMenu) {
-            System.out.println("Nhập lựa chọn của bạn");
-            System.out.println("1.Thêm hóa đơn");
-            System.out.println("2.Hiển thị tất cả hóa đơn");
-            System.out.println("3.Tìm kiếm hóa đơn theo tên khách hàng");
-            System.out.println("4.Tìm kiếm hóa đơn theo số điện thoại khách hàng");
-            System.out.println("5.Tính tổng doanh thu theo tháng:");
-            System.out.println("0.Thoát chương trình");
+            System.out.println("             Nhập lựa chọn của bạn         ");
+            System.out.println("| 1.Thêm hóa đơn                                    |");
+            System.out.println("| 2.Hiển thị tất cả hóa đơn                         |");
+            System.out.println("| 3.Tìm kiếm hóa đơn theo tên khách hàng            |");
+            System.out.println("| 4.Tìm kiếm hóa đơn theo số điện thoại khách hàng  |");
+            System.out.println("| 5.Tính tổng doanh thu theo tháng:                 |");
+            System.out.println("| 0.Thoát chương trình");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
